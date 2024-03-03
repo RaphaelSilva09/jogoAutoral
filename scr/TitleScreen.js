@@ -5,7 +5,7 @@ class TitleScreen extends Phaser.Scene {
 
     preload() {
 
-        console.log('tela inicial carregado com sucesso');
+        console.log('tela inicial iniciou com sucesso');
         // carregando a imagem do fundo da tela inicial
         this.load.image('bg1', 'assets/bgHomeScreen.jpg');
 
@@ -32,7 +32,7 @@ class TitleScreen extends Phaser.Scene {
 
         // criando texto da tela inicial
         textoInicial = this.add.text(
-            config.width / 2.9,
+            config.width / 2.68,
             config.height / 3,
             'Frog Jumper', {
             fontSize: '64px',
