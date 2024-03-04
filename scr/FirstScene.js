@@ -87,7 +87,7 @@ class FirstScene extends Phaser.Scene {
         end: 6,
       }),
     });
-    
+
     //criado ícones das gameState.estrela
     gameState.estrela = this.physics.add.sprite(700, 720, "estrela").setScale(.8);
     gameState.estrela1 = this.physics.add.sprite(1300, 260, "estrela").setScale(.8);
@@ -128,7 +128,7 @@ class FirstScene extends Phaser.Scene {
     gameState.estrela.anims.play("idleStar");
     gameState.estrela1.anims.play("idleStar");
     gameState.estrela2.anims.play("idleStar");
-    
+
 
     //habitando a colisão entre as plataformas e o gameState.sapo
     this.physics.add.collider(gameState.sapo, layerPlataforma);
@@ -147,6 +147,9 @@ class FirstScene extends Phaser.Scene {
     gameState.sapo.body.setSize(20, 20);
     gameState.sapo.body.setOffset(gameState.sapo.width / 4, gameState.sapo.height / 3.8);
 
+    // configurando placar
+    gameState.scoreText = this.add.text(620, 30, 'pontuação: 0', { fontSize: '32px' });
+
     console.log("Level 1 completou carregamento com sucesso");
   }
 
@@ -156,10 +159,10 @@ class FirstScene extends Phaser.Scene {
     const onGround = gameState.sapo.body.onFloor();
 
     if (this.teclado.up.isDown && onGround) {
-      gameState.sapo.anims.play("run", true);
+      gameState.sapo.anims.play("jump", true);
       gameState.sapo.setVelocityY(-250);
-    }
-  
+    } // não consegui descobrir porque, mas sapo não faz animação de pulo
+
     // Controle de movimento do gameState.sapo
     if (this.teclado.left.isDown) {
       gameState.sapo.setVelocityX(-100);
@@ -170,30 +173,31 @@ class FirstScene extends Phaser.Scene {
       gameState.sapo.anims.play("run", true);
       gameState.sapo.flipX = false;
     } else {
-        gameState.sapo.setVelocityX(0);
-        gameState.sapo.anims.play("idle");
+      gameState.sapo.setVelocityX(0);
+      gameState.sapo.anims.play("idle");
     }
 
-    if (i == 3) {
-    this.scene.stop('FirstScene');
-    this.scene.start('EndScene');
-      }
+    if (gameState.score === 3) {
+      this.scene.stop('FirstScene');
+      this.scene.start('EndScene');
+    }
   }
 }
 
-function collectStar (player, estrela)
-{
-    estrela.disableBody(true, true);
+function collectStar(player, estrela) {
+  estrela.disableBody(true, true);
+  gameState.score += 1;
+  gameState.scoreText.setText('Pontuação: ' + gameState.score);
 }
 
-function collectStar1 (player, estrela1)
-{
-    estrela1.disableBody(true, true);
+function collectStar1(player, estrela1) {
+  estrela1.disableBody(true, true);
+  gameState.score += 1;
+  gameState.scoreText.setText('Pontuação: ' + gameState.score);
 }
 
-function collectStar2 (player, estrela2)
-{
-    estrela2.disableBody(true, true);
+function collectStar2(player, estrela2) {
+  estrela2.disableBody(true, true);
+  gameState.score += 1;
+  gameState.scoreText.setText('Pontuação: ' + gameState.score);
 }
-
-var i;

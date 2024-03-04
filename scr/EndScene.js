@@ -14,15 +14,15 @@ class EndScene extends Phaser.Scene {
     create() {
 
         // criando a imagem do fundo
-        this.add.image(config.width / 2, config.height / 2, 'bg1'). setScale(2);
+        this.add.image(config.width / 2, config.height / 2, 'bg1').setScale(2);
 
-        // criando texto da tela inicial
+        // criando texto da tela final
         gameState.textoFinal = this.add.text(
-            config.width / 2.68,
+            config.width / 5,
             config.height / 3,
-            'Parabéns, você coletou todas as estrelas!', {
-            fontSize: '64px',
-            // color: '#f000' //cor preta não funcionou
+            'Parabéns, você coletou todas as estrelas! \n     Obrigado por jogar Frog Jumper!', {
+            fontSize: '48px',
+            color: "#000"
         });
     }
 }
