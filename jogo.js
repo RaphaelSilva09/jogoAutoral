@@ -14,9 +14,10 @@ const config = {
     arcade: {
       gravity: { y: 300 },
       enableBody: true,
+      debug:true,
     },
   },
-  scene: [TitleScreen, FirstScene]
+  scene: [TitleScreen, FirstScene, EndScene]
 };
 
 const game = new Phaser.Game(config);
