@@ -90,7 +90,7 @@ class FirstScene extends Phaser.Scene {
 
     //criado ícones das gameState.estrela
     gameState.estrela = this.physics.add.sprite(700, 720, "estrela").setScale(.8);
-    gameState.estrela1 = this.physics.add.sprite(1300, 260, "estrela").setScale(.8);
+    gameState.estrela1 = this.physics.add.sprite(1200, 260, "estrela").setScale(.8);
     gameState.estrela2 = this.physics.add.sprite(970, 420, "estrela").setScale(.8);
 
     //criando animação dos gameState.sapo andando
